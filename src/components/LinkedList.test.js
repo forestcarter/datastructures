@@ -12,7 +12,7 @@ describe("LinkedList.", () => {
     });
 
     it("initializes with three nodes", () => {
-        expect(linkedList.state()).toEqual([{nodeId:0},{nodeId:1},{nodeId:2}]);
+        expect(linkedList.state().nodes.length).toEqual(3);
     });
 
     // describe("when typing into the person input", () => {

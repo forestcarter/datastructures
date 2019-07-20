@@ -1,0 +1,14 @@
+.linkedListContainer {
+	display: flex;
+	justify-content:space-evenly;
+  }
+
+  .sectionHeader{
+	  text-align: center;
+  }
+
+  
+  .flexRow{
+	display: flex;
+	justify-content:space-between; 
+  }

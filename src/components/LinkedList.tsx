@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./LinkedList.css";
 import { Button } from "react-bootstrap";
+import {fetchFilms} from './fetchFilms'
 
 class Node {
     nodeId: number;
@@ -72,37 +73,36 @@ class LinkedList extends Component<IProps, IState> {
         this.setState(() => ({ loading: false }));
     };
 
-    returnAfterPop = (listToPop: any) => {
-        const newList: singlyLinkList = listToPop;
-        newList.pop();
-        return newList;
-    };
-
     subtractElement = (e: any) => {
+        const returnAfterPop = (listToPop: any) => {
+            const newList: singlyLinkList = listToPop;
+            newList.pop();
+            return newList;
+        };
         this.setState(prevState => ({
-            linkedList: this.returnAfterPop(prevState.linkedList)
+            linkedList: returnAfterPop(prevState.linkedList)
         }));
     };
 
     getFilmName = async (indexNum: number) => {
-        const query = ` query { allFilms { title } } `;
-        const rawResponse = await fetch(
-            "https://api.graphcms.com/simple/v1/swapi",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query })
-            }
-        );
-        let dataResult = await rawResponse.json();
+        const dataResult = await fetchFilms();
+        const compareFilms = (
+            a: { releaseDate: string; title: string },
+            b: { releaseDate: string; title: string }
+        ) => {
+            return (
+                parseInt(a.releaseDate.slice(0, 4)) -
+                parseInt(b.releaseDate.slice(0, 4))
+            );
+        };
+        const sortedFilms = dataResult.data.allFilms.sort(compareFilms);
 
         this.setState(prevState => ({
             linkedList: prevState.linkedList.push(
                 indexNum,
-                dataResult.data.allFilms[indexNum].title
+                sortedFilms[indexNum].title
             )
         }));
-        return dataResult.title;
     };
 
     async componentDidMount() {
@@ -126,7 +126,7 @@ class LinkedList extends Component<IProps, IState> {
                 <div className="flexRow">
                     <Button
                         disabled={this.state.loading}
-                        className="addButton"
+                        className="subtractButton"
                         onClick={this.subtractElement}
                     >
                         Delete Item
@@ -137,7 +137,7 @@ class LinkedList extends Component<IProps, IState> {
                             return <div key={node.nodeId}>{node.filmName}</div>;
                         })}
                     </div>
-					
+
                     <Button
                         disabled={
                             this.state.loading ||

@@ -10,9 +10,7 @@ describe("App", () => {
         expect(app).toMatchSnapshot();
     });
 
-    // it("initializes the `state` with an empty list", () => {
-    //     expect(app.state().gifts).toEqual([]);
-    // });
+    
 
     // describe("when clicking add gift", () => {
     //     beforeEach(() => {

@@ -21,6 +21,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "jest":{
+	  "collectCoverageFrom":[
+		  "src/**/**.js",
+		  "src/**/**.ts",
+		  "src/**/**.tsx",
+		  "!src/index.js",
+		  "!src/tempPolyfills.js"
+	  ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

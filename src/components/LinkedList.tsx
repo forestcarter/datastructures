@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./LinkedList.css";
 import { Button } from "react-bootstrap";
-import {fetchFilms} from './fetchFilms'
+import { fetchFilms } from "./fetchFilms";
 
 class Node {
     nodeId: number;
@@ -86,30 +86,34 @@ class LinkedList extends Component<IProps, IState> {
 
     getFilmName = async (indexNum: number) => {
         const dataResult = await fetchFilms();
-        const compareFilms = (
-            a: { releaseDate: string; title: string },
-            b: { releaseDate: string; title: string }
-        ) => {
-            return (
-                parseInt(a.releaseDate.slice(0, 4)) -
-                parseInt(b.releaseDate.slice(0, 4))
-            );
+        const sortFilms = (dataResult: any) => {
+            const compareFilms = (
+                a: { releaseDate: string; title: string },
+                b: { releaseDate: string; title: string }
+            ) => {
+                return (
+                    parseInt(a.releaseDate.slice(0, 4)) -
+                    parseInt(b.releaseDate.slice(0, 4))
+                );
+            };
+            return dataResult.data.allFilms.sort(compareFilms);
         };
-        const sortedFilms = dataResult.data.allFilms.sort(compareFilms);
-
+        const newFilmName = dataResult
+            ? sortFilms(dataResult)[indexNum].title
+            : "Missing";
         this.setState(prevState => ({
-            linkedList: prevState.linkedList.push(
-                indexNum,
-                sortedFilms[indexNum].title
-            )
+            linkedList: prevState.linkedList.push(indexNum, newFilmName)
         }));
     };
 
     async componentDidMount() {
         this.setState(() => ({ loading: true }));
-        await this.getFilmName(0);
-        await this.getFilmName(1);
-        await this.getFilmName(2);
+        [0, 1, 2].map(ind => {
+            this.getFilmName(ind);
+        });
+        // await this.getFilmName(0);
+        // await this.getFilmName(1);
+        // await this.getFilmName(2);
         this.setState(() => ({ loading: false }));
     }
 

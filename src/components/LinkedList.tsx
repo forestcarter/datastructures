@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./LinkedList.css";
 import { Button } from "react-bootstrap";
 import { fetchFilms } from "./fetchFilms";
+import bb8_1 from './images/bb1 - Copy (7).png';
 
 class Node {
     nodeId: number;
@@ -65,12 +66,15 @@ interface IState {
 }
 
 class LinkedList extends Component<IProps, IState> {
-    state: IState = { linkedList: new singlyLinkList(), loading: true };
+    state: IState = { linkedList: new singlyLinkList(), loading: false };
 
-    addElement = async (e: any) => {
+    addElement = async () => {
         this.setState(() => ({ loading: true }));
-        await this.getFilmName(this.state.linkedList.length);
-        this.setState(() => ({ loading: false }));
+
+        return this.getFilmName(this.state.linkedList.length).then(() => {
+			console.log("ko")
+            this.setState(() => ({ loading: false }));
+        })
     };
 
     subtractElement = (e: any) => {
@@ -84,8 +88,7 @@ class LinkedList extends Component<IProps, IState> {
         }));
     };
 
-    getFilmName = async (indexNum: number) => {
-        const dataResult = await fetchFilms();
+    getFilmName = (indexNum: number) => {
         const sortFilms = (dataResult: any) => {
             const compareFilms = (
                 a: { releaseDate: string; title: string },
@@ -98,24 +101,33 @@ class LinkedList extends Component<IProps, IState> {
             };
             return dataResult.data.allFilms.sort(compareFilms);
         };
-        const newFilmName = dataResult
-            ? sortFilms(dataResult)[indexNum].title
-            : "Missing";
-        this.setState(prevState => ({
-            linkedList: prevState.linkedList.push(indexNum, newFilmName)
-        }));
+
+        return fetchFilms()
+            .then(dataResult => {
+				const newFilmName = sortFilms(dataResult)[indexNum].title;
+				
+                this.setState(prevState => ({
+                    linkedList: prevState.linkedList.push(indexNum, newFilmName)
+                }));
+            })
+            .catch(() => {
+                this.setState(prevState => ({
+                    linkedList: prevState.linkedList.push(indexNum, "Missing")
+                }));
+            });
     };
 
-    async componentDidMount() {
-        this.setState(() => ({ loading: true }));
-        [0, 1, 2].map(ind => {
-            this.getFilmName(ind);
-        });
-        // await this.getFilmName(0);
-        // await this.getFilmName(1);
-        // await this.getFilmName(2);
-        this.setState(() => ({ loading: false }));
-    }
+    // async componentDidMount() {
+    //     this.setState(() => ({ loading: true }));
+    //     // const result = await [0, 1, 2].forEach(ind => {
+    //     //     this.getFilmName(ind);
+    //     // });
+    //     await this.getFilmName(0);
+    //     await this.getFilmName(1);
+    //     await this.getFilmName(2);
+    // 	this.setState(() => ({ loading: false }));
+    // 	//return result
+    // }
 
     render() {
         let currentHead = this.state.linkedList.head;
@@ -138,7 +150,18 @@ class LinkedList extends Component<IProps, IState> {
 
                     <div className="linkedListContainer">
                         {arrayToRender.map(node => {
-                            return <div key={node.nodeId}>{node.filmName}</div>;
+                            return (
+                                <div className="listItem" key={node.nodeId}>
+                                    <img
+										className="filmImage"
+										alt=""
+                                        src={bb8_1}
+                                    />
+                                    <p  className="filmLabel">
+                                        {node.filmName}
+                                    </p>
+                                </div>
+                            );
                         })}
                     </div>
 

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import LinkedList from "./LinkedList";
+import BST from "./BinarySearchTree";
+
 class App extends Component {
     constructor() {
         super();
@@ -31,7 +33,12 @@ class App extends Component {
     // }
 
     render() {
-        return <div className="linkedList">{<LinkedList />}</div>;
+        return (
+            <div>
+                <div className="linkedList">{<LinkedList />}</div>;
+                <div className="binarySearchTree">{<BST />}</div>;
+            </div>
+        );
     }
 }
 

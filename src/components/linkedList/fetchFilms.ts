@@ -8,6 +8,5 @@ export async function fetchFilms() {
                 body: JSON.stringify({ query })
             }
 		);
-		const dataResult = await rawResponse.json();
-		return dataResult
+		return await rawResponse.json();
   }

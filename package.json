@@ -26,6 +26,9 @@
 		  "src/**/**.js",
 		  "src/**/**.ts",
 		  "src/**/**.tsx",
+		  "src/**/**/**.js",
+		  "src/**/**/**.ts",
+		  "src/**/**/**.tsx",
 		  "!src/index.js",
 		  "!src/tempPolyfills.js"
 	  ]

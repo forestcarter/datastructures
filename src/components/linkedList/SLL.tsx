@@ -15,9 +15,34 @@ interface IState {
 class SLL extends Component<IProps, IState> {
     state: IState = { linkedList: new SinglyLinkedList(), loading: false };
 
+    sortObjectByNumberedString = (
+        key: string,
+        sliceIndex: { start: number; stop: number }
+    ) => {
+        return (a: any, b: any) => {
+            return (
+                parseInt(a[key].slice(sliceIndex.start, sliceIndex.stop)) -
+                parseInt(b[key].slice(sliceIndex.start, sliceIndex.stop))
+            );
+        };
+    };
+
     addElement = async () => {
         this.setState(() => ({ loading: true }));
-        return this.getFilmName(this.state.linkedList.length).then(() => {
+        fetchFilms().then(dataResult => {
+            const sortedFilms = dataResult.data.allFilms.sort(
+                this.sortObjectByNumberedString("releaseDate", {
+                    start: 0,
+                    stop: 4
+                })
+            );
+            const newFilmIndex = this.state.linkedList.length;
+            this.setState(prevState => ({
+                linkedList: prevState.linkedList.push(
+                    newFilmIndex,
+                    sortedFilms[newFilmIndex].title
+                )
+            }));
             this.setState(() => ({ loading: false }));
         });
     };
@@ -29,33 +54,9 @@ class SLL extends Component<IProps, IState> {
             return newList;
         };
 
-        const popped = this.state.linkedList.pop();
         this.setState(prevState => ({
             linkedList: returnAfterPop(prevState.linkedList)
         }));
-        return popped;
-    };
-
-    getFilmName = (indexNum: number) => {
-        const sortFilms = (dataResult: any) => {
-            const compareFilms = (
-                a: { releaseDate: string; title: string },
-                b: { releaseDate: string; title: string }
-            ) => {
-                return (
-                    parseInt(a.releaseDate.slice(0, 4)) -
-                    parseInt(b.releaseDate.slice(0, 4))
-                );
-            };
-            return dataResult.data.allFilms.sort(compareFilms);
-        };
-
-        return fetchFilms().then(dataResult => {
-            const newFilmName = sortFilms(dataResult)[indexNum].title;
-            this.setState(prevState => ({
-                linkedList: prevState.linkedList.push(indexNum, newFilmName)
-            }));
-        });
     };
 
     render() {

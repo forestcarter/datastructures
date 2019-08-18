@@ -33,7 +33,7 @@ export default class SinglyLinkedList {
     }
 
     pop() {
-        if (this.head === null) return undefined;
+        if (this.head === null) return;
         var current = this.head;
         var newTail = current;
         while (current.next) {
@@ -48,6 +48,5 @@ export default class SinglyLinkedList {
             this.tail = newTail;
             this.tail.next = null;
         }
-        return current;
     }
 }

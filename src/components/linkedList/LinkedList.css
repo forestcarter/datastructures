@@ -8,6 +8,10 @@ body{
 	background-color: #000000;
 }
 
+.linkedList{
+	height: 270px;
+}
+
 .listItem{
 	padding:10px;
 	margin: 10px;

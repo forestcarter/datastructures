@@ -7,10 +7,14 @@
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.5",
+    "bootstrap": "^4.3.1",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "typescript": "^3.5.3"
   },
@@ -21,17 +25,17 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "jest":{
-	  "collectCoverageFrom":[
-		  "src/**/**.js",
-		  "src/**/**.ts",
-		  "src/**/**.tsx",
-		  "src/**/**/**.js",
-		  "src/**/**/**.ts",
-		  "src/**/**/**.tsx",
-		  "!src/index.js",
-		  "!src/tempPolyfills.js"
-	  ]
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/**.js",
+      "src/**/**.ts",
+      "src/**/**.tsx",
+      "src/**/**/**.js",
+      "src/**/**/**.ts",
+      "src/**/**/**.tsx",
+      "!src/index.js",
+      "!src/tempPolyfills.js"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

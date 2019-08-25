@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "../App.js";
+import App from "../../App.js/index.js.js";
 
 describe("App", () => {
 	//const id = 1;

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./LinkedList.css";
 import { Button } from "react-bootstrap";
 import { fetchFilms } from "./fetchFilms";
-import bb8_1 from "../images/bb1 - Copy (7).png";
 import SinglyLinkedList from "./SinglyLinkedList";
 
 interface IProps {}
@@ -71,11 +70,14 @@ class SLL extends Component<IProps, IState> {
                 <h2 className="sectionHeader">Linked List</h2>
                 <div className="flexRow">
                     <Button
-                        disabled={this.state.loading}
-                        className="subtractButton"
+                        disabled={
+                            this.state.loading ||
+                            this.state.linkedList.length === 0
+                        }
+                        className="addRemoveButton"
                         onClick={this.subtractElement}
                     >
-                        Delete Item
+                        -
                     </Button>
 
                     <div className="linkedListContainer">
@@ -85,9 +87,13 @@ class SLL extends Component<IProps, IState> {
                                     <img
                                         className="filmImage"
                                         alt=""
-                                        src={bb8_1}
+                                        src={`../icons/${node.nodeId}.png`}
                                     />
-                                    <p className="filmLabel">{node.filmName}</p>
+                                    <div className="filmLabelContainer">
+                                        <div className="filmLabel">
+                                            {node.filmName}
+                                        </div>
+                                    </div>
                                 </div>
                             );
                         })}
@@ -98,11 +104,40 @@ class SLL extends Component<IProps, IState> {
                             this.state.loading ||
                             this.state.linkedList.length >= 7
                         }
-                        className="addButton"
+                        className="addRemoveButton"
                         onClick={this.addElement}
                     >
-                        Add Item
+                        +
                     </Button>
+                </div>
+                <div className="descriptionContainer">
+                    <p className="description">
+                        This page retrieves the names of Star Wars films from
+                        <a href="https://swapi.co/"> SWAPI </a>using GraphQL.
+                        Data is stored in a singly-linked list with{" "}
+                        <button
+                            disabled={
+                                this.state.loading ||
+                                this.state.linkedList.length >= 7
+                            }
+                            onClick={this.addElement}
+                            className="link"
+                        >
+                            INSERT
+                        </button>
+                        {" "}and{" "}
+                        <button
+                            disabled={
+                                this.state.loading ||
+                                this.state.linkedList.length === 0
+                            }
+                            className="link"
+                            onClick={this.subtractElement}
+                        >
+                            POP
+                        </button>{" "}
+                        functionality.{" "}
+                    </p>
                 </div>
             </div>
         );

@@ -1,92 +1,80 @@
 .linkedListContainer {
     display: flex;
-	justify-content: center;
-	width: 90%
+    justify-content: center;
+    width: 90%;
 }
 
-body{
-	background-color: #000000;
-}
-
-.linkedList{
-	height: 270px;
-}
-
-.listItem{
-	padding:10px;
-	margin: 10px;
-	border : solid black 1px;
-	width: 9%;
-	height:180px
+.linkedList {
+    height: 270px;
 }
 
 .sectionHeader {
-	text-align: center;
-	font-family:'Roboto',sans-serif;
-	font-weight:300;
-	background-color: #000000;
-	color:#FFFFFF;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.addRemoveButton {
+    margin: auto;
 }
 
 .flexRow {
     display: flex;
     justify-content: center;
+	width: 90%;
+	height : 120px;
+	margin: auto;
+	margin-bottom: 100px;
 }
 
-Button{
-	height: 100%;
-	width:5%;
-	margin-top: 20px;
-	margin-left:2%;
-	margin-right:2%;
-	border:0.1em solid #FFFFFF;
-	font-family:'Roboto',sans-serif;
-	font-weight:300;
-	background-color: #000000;
-	color:#FFFFFF;
-	text-align:center;
-	transition: all 0.2s;
-	border-radius: 3px;
-	
-
-}
-Button:hover{
-	color:#000000;
-	background-color:#FFFFFF;
-	}
-
-Button:disabled{
-	opacity: 0.65; 
-  	cursor: not-allowed;
-	}
-
-.filmImage{
-	height:65%;
-	width:100%
+button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
 }
 
-.filmLabel{
-	text-align: center;
-	font-family: 'Press Start 2P', cursive;
-	font-size: x-small;
-	padding-top: 4px;
-	height: 30px;
-	color:#FFFFFF;
-
+.filmImage {
+    width: 40px;
+    max-width: 40px;
+    padding: 5px;
 }
 
-#stars {
-	position:absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	width:100%;
-	height:100%;
-	display:block;
-  }
-  
-  #stars {
-	background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-	z-index:-1;
-  }
+.listItem {
+    margin: 10px;
+    padding: 0px;
+    border: solid black 1px;
+    width: 12%;
+    height: 100px;
+    text-align: center;
+}
+
+.filmLabelContainer {
+    min-height: 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filmLabel {
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: x-small;
+}
+
+.descriptionContainer {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+.description {
+    text-align: center;
+    width: 100%;
+}
+
+.link {
+	font-weight: 300;
+}

@@ -1,0 +1,12 @@
+.App {
+    margin-top: 15px;
+}
+
+.App .navbar-brand {
+    font-weight: bold;
+}
+
+#overrides-nav-toggler {
+	padding-left: 0px;
+    padding-right: 0px;	
+}

@@ -28,17 +28,8 @@ class BST extends Component<IProps, IState> {
             bst.root === null
                 ? parseInt(this.state.newNumber)
                 : this.state.displayNode.main;
-        // const defaultNode = {parent:-1, main:-1,left:-1,right:-1}
-        // const firstNode = {parent:-1, main:parseInt(this.state.newNumber),left:-1,right:-1}
-        // console.log(bst.root===null)
-        //const newDisplayNode= bst.root===null?firstNode:defaultNode
 
         bst.insert(parseInt(this.state.newNumber));
-        // this.setState(() => ({
-        // 	bst: newBST,
-        // 	newNumber:'',
-        // 	displayNode : newDisplayNode
-        // }));
         this.updateView(newMain, bst);
     };
 
@@ -96,32 +87,14 @@ class BST extends Component<IProps, IState> {
 
     render() {
         return (
-            <div>
-                <div className="">
-                    <label className="bstLabel">Add Number</label>
-                    <input
-                        name="newNumber"
-                        type="number"
-                        min="0"
-                        value={this.state.newNumber}
-                        id="table_optionOpacity"
-                        onChange={e => this.handleInputChange(e.target.value)}
-                        className="table_option form-control "
-                    />
-                </div>
-                <Button
-                    disabled={this.state.loading}
-                    className=""
-                    onClick={this.addData}
-                >
-                    Add Item
-                </Button>
+            <div className="pageContainer"> 
+			<h2 className="sectionHeader">Binary Search Tree</h2>
                 <div className="bstContainer">
                     <Button
                         disabled={
                             this.state.displayNode.parent===-1 || this.state.loading
                         }
-                        className=""
+                        className="directionButton btn btn-info"
                         onClick={this.findUp}
                     >
                         Up
@@ -142,7 +115,7 @@ class BST extends Component<IProps, IState> {
                         disabled={
                             this.state.displayNode.left===-1 || this.state.loading
                         }
-                        className=""
+                        className="directionButton btn btn-info"
                         onClick={this.findLeft}
                     >
                         Left
@@ -151,11 +124,36 @@ class BST extends Component<IProps, IState> {
                         disabled={
                             this.state.displayNode.right===-1 || this.state.loading
                         }
-                        className=""
+                        className="directionButton btn btn-info"
                         onClick={this.findRight}
                     >
                         Right
                     </Button>
+                </div>
+
+                <div className="addNumberContainer">
+                    <input
+                        name="newNumber"
+                        type="number"
+                        min="0"
+                        value={this.state.newNumber}
+                        id="table_optionOpacity"
+                        onChange={e => this.handleInputChange(e.target.value)}
+                        className="table_option form-control "
+                    />
+					<Button
+                    disabled={this.state.loading || this.state.newNumber===""}
+					className="btn btn-primary"
+					id="addItemButton"
+                    onClick={this.addData}
+                >
+                    Add Item
+                </Button>
+                </div>
+				<div className="descriptionContainer">
+                    <p className="description">
+                        This page allow items to be added to a binary search tree. A small <br/> section of the tree is displayed with buttons for navigation.{" "}
+                    </p>
                 </div>
             </div>
         );

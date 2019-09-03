@@ -74,7 +74,7 @@ class SLL extends Component<IProps, IState> {
                             this.state.loading ||
                             this.state.linkedList.length === 0
                         }
-                        className="addRemoveButton"
+                        className="addRemoveButton subtractButton"
                         onClick={this.subtractElement}
                     >
                         -
@@ -104,7 +104,7 @@ class SLL extends Component<IProps, IState> {
                             this.state.loading ||
                             this.state.linkedList.length >= 7
                         }
-                        className="addRemoveButton"
+                        className="addRemoveButton addButton "
                         onClick={this.addElement}
                     >
                         +

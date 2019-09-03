@@ -34,7 +34,7 @@ class BST extends Component<IProps, IState> {
     };
 
     updateView = (
-        newMain: number = this.state.displayNode.main,
+        newMain: number,
         bst: BinarySearchTree = this.state.bst
     ) => {
         const newBST = bst;
@@ -94,28 +94,30 @@ class BST extends Component<IProps, IState> {
                         disabled={
                             this.state.displayNode.parent===-1 || this.state.loading
                         }
-                        className="directionButton btn btn-info"
+						className="directionButton btn btn-info"
+						id="upButton"
                         onClick={this.findUp}
                     >
                         Up
                     </Button>
                 </div>
                 <div className="bstContainer">
-                    <p className="bstLabel">{this.state.displayNode.parent>-1?this.state.displayNode.parent: 'Empty'}</p>
+                    <p id='parentDisplay' className="bstLabel">{this.state.displayNode.parent>-1?this.state.displayNode.parent: 'Empty'}</p>
                 </div>
                 <div className="bstContainer">
-                    <p className="bstLabel">{this.state.displayNode.main>-1?this.state.displayNode.main: 'Empty'}</p>
+                    <p id='mainDisplay' className="bstLabel">{this.state.displayNode.main>-1?this.state.displayNode.main: 'Empty'}</p>
                 </div>
                 <div className="bstContainer">
-                    <p className="bstLabel">{this.state.displayNode.left>-1?this.state.displayNode.left: 'Empty'}</p>
-                    <p className="bstLabel">{this.state.displayNode.right>-1?this.state.displayNode.right: 'Empty'}</p>
+                    <p id='leftDisplay' className="bstLabel">{this.state.displayNode.left>-1?this.state.displayNode.left: 'Empty'}</p>
+                    <p id='rightDisplay' className="bstLabel">{this.state.displayNode.right>-1?this.state.displayNode.right: 'Empty'}</p>
                 </div>
                 <div className="bstContainer">
                     <Button
                         disabled={
                             this.state.displayNode.left===-1 || this.state.loading
                         }
-                        className="directionButton btn btn-info"
+						className="directionButton btn btn-info"
+						id="leftButton"
                         onClick={this.findLeft}
                     >
                         Left
@@ -124,7 +126,9 @@ class BST extends Component<IProps, IState> {
                         disabled={
                             this.state.displayNode.right===-1 || this.state.loading
                         }
-                        className="directionButton btn btn-info"
+						className="directionButton btn btn-info"
+						id="rightButton"
+						
                         onClick={this.findRight}
                     >
                         Right
@@ -139,7 +143,7 @@ class BST extends Component<IProps, IState> {
                         value={this.state.newNumber}
                         id="table_optionOpacity"
                         onChange={e => this.handleInputChange(e.target.value)}
-                        className="table_option form-control "
+                        className="table_option form-control numberInput"
                     />
 					<Button
                     disabled={this.state.loading || this.state.newNumber===""}

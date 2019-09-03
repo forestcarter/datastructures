@@ -59,7 +59,7 @@ describe("LinkedList", () => {
             );
         });
 
-        it("Get first film and succeed2", async () => {
+        it("Get first film and succeed", async () => {
             wrapper.find(".addButton").simulate("click");
             await tick();
 

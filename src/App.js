@@ -16,6 +16,10 @@ class App extends Component {
 
     handleBST = () => {
         this.props.history.push("/BST");
+	};
+	
+	handleMBH = () => {
+        this.props.history.push("/MBH");
     };
     render() {
         return (
@@ -26,7 +30,8 @@ class App extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link href="SLL">Singly-Linked List</Nav.Link>
-                            <Nav.Link href="BST">Binary Search Tree</Nav.Link>
+							<Nav.Link href="BST">Binary Search Tree</Nav.Link>
+                            <Nav.Link href="MBH">Max Binary Heap</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import "./App.css";
+import { Nav, Navbar } from "react-bootstrap";
+import Routes from "./Routes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {};
+    }
+
+    handleSSL = () => {
+        this.props.history.push("/SLL");
+    };
+
+    handleBST = () => {
+        this.props.history.push("/BST");
+	};
+	
+	handleMBH = () => {
+        this.props.history.push("/MBH");
+    };
+    render() {
+        return (
+            <div>
+                <Navbar variant="dark" bg="dark" expand="lg">
+                    <Navbar.Brand href="/">Playground</Navbar.Brand>
+                    <Navbar.Toggle id="overrides-nav-toggler" aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="SLL">Singly-Linked List</Nav.Link>
+							<Nav.Link href="BST">Binary Search Tree</Nav.Link>
+                            <Nav.Link href="MBH">Max Binary Heap</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+                <Routes />
+            </div>
+        );
+    }
 }
 
-export default App;
+export default withRouter(App);

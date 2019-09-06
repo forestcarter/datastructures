@@ -1,0 +1,38 @@
+.pageContainer{
+	text-align: center;
+}
+
+.mbhContainer {
+    display: flex;
+	justify-content: center;
+	height:60px;
+	margin:0px 30px 0px 30px;
+	background-color: #343a40
+}
+
+.addNumberContainer{
+	width:100px;
+	margin:auto;
+	margin-top:30px;
+
+}
+
+.mbhLabel{
+	width:50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 50%;
+	text-align: center;
+	border: solid black 1px;
+	margin:5px 3px 5px 3px;
+	
+	background-color: beige
+}
+
+#heapSectionHeader{
+	margin-bottom: 10px;
+}
+.padBottom{
+	margin-bottom: 10px;
+	margin-top: 10px;
+}

@@ -28,8 +28,8 @@
   "jest": {
     "collectCoverageFrom": [
 	 
-      "src/components/linkedList/**",
-	  "src/components/binarySearchTree/**"
+      "/src/components/linkedList/**",
+	  "/src/components/binarySearchTree/**"
     ]
   },
   "eslintConfig": {

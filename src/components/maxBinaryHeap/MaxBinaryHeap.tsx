@@ -29,9 +29,9 @@ export default class MaxBinaryHeap {
             const leftIndex = index * 2 + 1;
             const rightIndex = index * 2 + 2;
             const compareIndex =
-                this.array[leftIndex] > this.array[rightIndex]
-                    ? leftIndex
-                    : rightIndex;
+                this.array[leftIndex] < this.array[rightIndex]
+                    ? rightIndex
+                    : leftIndex;
             if (this.array[index] < this.array[compareIndex]) {
                 const compareValue = this.array[compareIndex];
                 this.array[compareIndex] = this.array[index];

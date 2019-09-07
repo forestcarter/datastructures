@@ -71,7 +71,7 @@ class MBH extends Component<IProps, IState> {
                         min="0"
                         max="999"
                         value={this.state.newNumber}
-                        id="table_optionOpacity"
+                        id="heapInput"
                         onChange={e => this.handleInputChange(e.target.value)}
                         className="table_option form-control numberInput"
                     />
@@ -79,7 +79,8 @@ class MBH extends Component<IProps, IState> {
                         disabled={
                             !this.state.isValid ||
                             this.state.mbh.array.length > 17
-                        }
+						}
+						id="heapAddButton"
                         className="btn btn-primary padBottom"
                         onClick={this.addData}
                     >
@@ -88,7 +89,8 @@ class MBH extends Component<IProps, IState> {
 					<Button
                         disabled={
                             this.state.mbh.array.length === 0
-                        }
+						}
+						id="heapRemoveButton"
                         className="btn btn-warning padBottom"
                         onClick={this.remove}
                     >

@@ -39,7 +39,6 @@ export default class MaxBinaryHeap {
                 index = compareIndex;
                 continue;
             }
-
             return this;
         }
     }

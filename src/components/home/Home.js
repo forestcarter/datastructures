@@ -14,8 +14,8 @@ export default () => (
                 <a href="https://airbnb.io/enzyme/">Enzyme</a>. This site is
                 hosted on a Debian Stretch Virtual Machine courtesy of Microsoft
                 Azure. NodeJS and Express are used to serve the site. React
-				Router handles the routing. HTTPS support courtesy of Certbot.
-				CI/CD provided by Buddy.
+				Router handles the routing. HTTPS support courtesy of <a href="https://certbot.eff.org">Certbot</a>.
+				CI/CD provided by <a href="https://buddy.works">Buddy</a>.
 
             </p>
             <img
